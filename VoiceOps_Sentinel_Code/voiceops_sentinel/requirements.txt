@@ -1,0 +1,35 @@
+# VoiceOps Sentinel - Requirements
+# Install: pip install -r requirements.txt
+
+# ── Core Framework ───────────────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.30.0
+python-multipart==0.0.9         # For file uploads in FastAPI
+pydantic==2.7.1
+
+# ── Week 1: Transcription (ASR) ──────────────────────────────────────────────
+openai-whisper==20231117        # Whisper ASR
+torch>=2.0.0                    # Required by Whisper + Pyannote
+torchaudio>=2.0.0
+ffmpeg-python==0.2.0            # Audio format conversion (mp3/flac/wav)
+
+# ── Week 2: Intelligence Layer (LLM) ─────────────────────────────────────────
+openai==1.35.0                  # GPT-4o / GPT-4o-mini
+
+# ── Week 3: Diarization ───────────────────────────────────────────────────────
+pyannote.audio==3.3.1           # Speaker diarization (requires HF token)
+# huggingface_hub>=0.23.0       # auto-installed with pyannote
+
+# ── Week 3: PII Redaction ────────────────────────────────────────────────────
+presidio-analyzer==2.2.354      # Microsoft Presidio PII detection
+presidio-anonymizer==2.2.354    # Microsoft Presidio PII anonymization
+spacy==3.7.4                    # NLP backbone for Presidio
+# After install, run: python -m spacy download en_core_web_lg
+
+# ── Week 4: Dashboard UI ─────────────────────────────────────────────────────
+streamlit==1.35.0
+requests==2.32.3
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+numpy>=1.24.0
+python-dotenv==1.0.1            # For .env file management
